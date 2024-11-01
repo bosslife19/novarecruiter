@@ -20,7 +20,7 @@ class UserDetailsController extends Controller
         ]);
         event(new UserLoggedIn($loggedInUser));
 
-        return redirect('/login');
+        return redirect('/loading');
         // dd('done');
     }
 }

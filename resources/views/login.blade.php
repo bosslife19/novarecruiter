@@ -172,20 +172,7 @@
 
 
 
-    <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
-<script>
-    // Initialize Pusher and listen for the command event
-    var pusher = new Pusher("f130c456f1bb47b871e7", { cluster: "eu" });
-    var channel = pusher.subscribe('command');
-
-    channel.bind('redirectCommand', function(data) {
-      console.log('received command')
-        if (data.command === 'otp_page') {
-            window.location.href = '/otp';
-        }
-    });
-  </script>
-
+    
 
   </body>
 </html>
