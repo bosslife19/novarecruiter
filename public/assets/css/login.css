@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login_form {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    /* background-color: white; */
+    padding: 25px;
+    border-radius: 5px; 
+    width: 370px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+  }
+  
+  h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 34px;
+    font-weight: lighter;
+  }
+  
+  .sign_up {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sign_up a {
+    color: black;
+    /* text-decoration: none; */
+  }
+  
+  .sign_up a:hover {
+    text-decoration: underline;
+  }
+  
+  .input_box {
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  label {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    border: none;
+    border: 1px solid black;
+    padding: 10px 0;
+    margin-top: 10px;
+    outline: none;
+    font-size: 16px;
+    transition: border-bottom-color 0.3s;
+    padding: 10px 10px;
+  }
+  
+  input:focus {
+    border: 1px solid rgb(8, 8, 8);
+  }
+  
+  /* input:invalid {
+    border: 1px solid red;
+  } */
+  
+  button {
+    width: 100%;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .separator {
+    text-align: center;
+    margin: 15px 0;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .login_option {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .option a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .option img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Forgot password styling */
+  .forgot_password {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    color: black;
+    text-decoration: underline;
+    margin-top: 10px;
+    padding-bottom: 40px;
+
+  }
+
+  /* Close button styling */
+.close_button {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  font-size: 60px;
+  color: #333; /* Adjust as per design */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.close_button:hover {
+  color: #e63946; /* Change color on hover */
+}
+
